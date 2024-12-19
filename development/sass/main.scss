@@ -1,0 +1,12 @@
+//Global things
+@use "reset/normalize";
+@use "reset/reset";
+
+//Basic configuration
+@use "base/variables";
+@use "base/base";
+
+//Parts
+@use "parts/header";
+@use "parts/front-page";
+@use "parts/footer";
