@@ -3,16 +3,17 @@
 .footer {
 	background-color: #1b0c2f; // Темний фон
 	color: var.$clr_white; // Білий текст
-	padding: 125px 0;
+	padding: 123px 0;
 
 	&__brand {
 		max-width: 150px;
-		margin-right: 120px;
+		margin-right: 144px;
 
 		.footer__logo {
-			font-size: 24px;
+			font-size: 23px;
 			font-weight: bold;
-			margin-bottom: 20px;
+			letter-spacing: 3px;
+			margin: 6px 0 2px 0;
 		}
 
 		.footer__description {
@@ -27,13 +28,14 @@
 	&__contact,
 	&__social {
 		.footer__title {
-			font-size: 16px;
+			font-size: 12px;
 			font-weight: bold;
-			margin-bottom: 28px;
+			margin-bottom: 22px;
 			text-transform: uppercase;
 			border-bottom: 2px solid var.$clr_primary;
-			padding-bottom: 5px;
+			padding-bottom: 10px;
 			display: inline-block;
+			letter-spacing: 6px;
 		}
 
 		.footer__list {
@@ -62,16 +64,14 @@
 	}
 
 	&__services {
-		margin-right: 85px;
+		margin-right: 89px;
 	}
 
 	&__contact {
-		margin-right: 25px;
+		margin-right: 136px;
 	}
 
-	&__social {
-		margin-right: 25px;
-	}
+	&__social {}
 
 	&__contact {
 		.footer__item {
@@ -81,33 +81,47 @@
 			margin-bottom: 0.5rem;
 		}
 
+		.footer__link {
+			font-size: 14px;
+			letter-spacing: 1px;
+			font-weight: 400;
+		}
+
 		.footer__icon {
-			font-size: 1rem;
-			color: #a600ff;
+			margin-right: 17px;
+
+			&--phone {
+				max-width: 9px;
+				margin-right: 21px;
+				display: flex;
+			}
 		}
 	}
 
 	&__social {
 		.footer__icons {
 			display: flex;
-			gap: 1rem;
+			padding: 24px 0 10px;
 
 			.footer__icon {
-				font-size: 1.2rem;
-				color: #fff;
-				transition: color 0.3s ease;
 
 				&:hover {
-					color: #a600ff;
+					color: var.$clr_primary;
+				}
+
+				&+.footer__icon {
+					margin-left: 40px;
 				}
 			}
 		}
 	}
 
 	&__copyright {
-		text-align: center;
-		font-size: 0.8rem;
-		color: #aaa;
-		margin-top: 2rem;
+		padding-top: 63px;
+
+		p {
+			font-size: 12px;
+			color: var.$clr_white;
+		}
 	}
 }
