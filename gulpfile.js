@@ -11,7 +11,6 @@ const concatCss = require('gulp-concat-css');
 const browserSync = require('browser-sync').create();
 const del = require('del');
 
-// Очищення папки dist
 gulp.task('clean', function () {
     return del(['dist/**/*']);
 });
@@ -19,7 +18,7 @@ gulp.task('clean', function () {
 // Оптимізація зображень
 gulp.task('images', () => {
     return gulp.src('development/images/**/*', { encoding: false })
-      .pipe(imagemin())
+      .pipe(imagemin({ optimizationLevel: 7, progressive: true, interlaced: true }))
       .pipe(gulp.dest('dist/images'));
 });
 

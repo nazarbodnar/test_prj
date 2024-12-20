@@ -1,8 +1,8 @@
 @use "base/variables" as var;
 
 .footer {
-	background-color: #1b0c2f; // Темний фон
-	color: var.$clr_white; // Білий текст
+	background-color: #1b0c2f;
+	color: var.$clr_white;
 	padding: 123px 0;
 
 	&__brand {
@@ -77,8 +77,7 @@
 		.footer__item {
 			display: flex;
 			align-items: center;
-			gap: 0.5rem;
-			margin-bottom: 0.5rem;
+			margin-bottom: 8px;
 		}
 
 		.footer__link {
@@ -102,6 +101,7 @@
 		.footer__icons {
 			display: flex;
 			padding: 24px 0 10px;
+			flex-wrap: wrap;
 
 			.footer__icon {
 
@@ -122,6 +122,129 @@
 		p {
 			font-size: 12px;
 			color: var.$clr_white;
+		}
+	}
+}
+
+
+@media screen and (max-width: 1240px) {
+	.footer-nav-holder {
+		flex-wrap: wrap;
+		width: 100%;
+		justify-content: space-between;
+	}
+
+	.footer {
+		justify-content: space-between;
+		padding: 50px 0 15px;
+
+		&__brand {
+			margin-right: 70px;
+		}
+
+		&__menu {
+			margin: 0;
+		}
+
+		&__services {
+			margin: 0;
+		}
+
+		&__contact {
+			margin-right: 0;
+		}
+
+		&__social {
+			margin: 25px 0;
+			width: 100%;
+		}
+
+		&__social {
+			.footer__icons {
+				padding: 0 0 10px 0;
+			}
+		}
+
+		&__copyright {
+			padding: 0;
+		}
+	}
+}
+
+
+@media screen and (max-width: 767px) {
+	.footer {
+		justify-content: space-between;
+		padding: 50px 0 15px;
+
+		&__brand {
+			display: none;
+		}
+
+		&__menu,
+		&__services,
+		&__contact,
+		&__social {
+			.footer__title {
+				display: block;
+				text-align: center;
+			}
+
+		}
+
+		&__menu {
+			margin: 0;
+		}
+
+		&__services {
+			margin: 0;
+		}
+
+		&__contact {
+			margin-right: 0;
+		}
+
+		&__social {
+			order: -1;
+			width: 100%;
+			margin-top: 0;
+		}
+
+		&__social {
+			.footer__icons {
+				padding: 0 0 10px 0;
+				display: flex;
+				justify-content: center;
+			}
+		}
+
+		&__copyright {
+			padding-top: 15px;
+			text-align: center;
+		}
+	}
+}
+
+@media screen and (max-width: 580px) {
+	.footer {
+
+		&__contact,
+		&__social {
+			width: 100%;
+			margin-bottom: 15px;
+		}
+
+		&__menu,
+		&__services {
+			width: 48%;
+			margin-bottom: 15px;
+		}
+
+		&__contact {
+			.footer__item {
+				display: flex;
+				justify-content: center;
+			}
 		}
 	}
 }

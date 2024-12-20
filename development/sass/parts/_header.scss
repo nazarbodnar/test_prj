@@ -4,6 +4,7 @@
 	padding: 57px 0;
 	position: absolute;
 	width: 100%;
+	z-index: 1;
 }
 
 .logo {
@@ -172,18 +173,21 @@
 	}
 }
 
-@media (max-width: 991px) {
+@media screen and (max-width: 1240px) {
 	.additional-nav {
-		margin: 0 25px 0 0;
+		margin: 0 25px 0 45px;
+	}
+}
 
-		&__sign-up {
-			margin-right: 15px;
-			padding: 7px 5px;
-			min-width: 80px;
-		}
 
-		&__select {
-			order: -1;
+
+@media (max-width: 991px) {
+	.header-wrapper {
+		position: relative;
+
+		.open-menu {
+			position: absolute;
+			right: 0;
 		}
 	}
 
@@ -193,38 +197,57 @@
 
 
 
-	.main-nav {
+	.top-nav-holder {
 		position: fixed;
 		top: 0;
 		left: -320px;
 		bottom: 0;
 		width: 320px;
 		z-index: 50;
-		background: #fff;
+		background: var.$clr_purple_300;
 		-webkit-transition: all .3s;
 		-o-transition: all .3s;
 		transition: all .3s;
 		padding-top: 80px;
 		opacity: 0;
+		align-items: flex-start;
+		border-right: 5px solid var.$clr_white;
 
-		&__list {
-			flex-direction: column;
+		.main-nav {
+			width: 100%;
 
-			li {
-				a {
-					padding: 15px;
-					display: block;
-					text-align: center;
+			&__list {
+				flex-direction: column;
+
+				li {
+					a {
+						padding: 15px;
+						display: block;
+						text-align: center;
+					}
+				}
+
+				li+li {
+					margin-left: 0;
 				}
 			}
-
-			li+li {
-				margin-left: 0;
-			}
 		}
+
+		.additional-nav {
+			position: absolute;
+			bottom: 0;
+			z-index: 5;
+			height: 80px;
+			align-items: center;
+			margin: 0;
+			width: 100%;
+			justify-content: center;
+		}
+
+
 	}
 
-	.menu-opened .main-nav {
+	.menu-opened .top-nav-holder {
 		left: 0;
 		overflow-y: auto;
 		opacity: 1;
@@ -232,12 +255,11 @@
 		&:before {
 			position: fixed;
 			content: '';
-			width: 320px;
+			width: 310px;
 			top: 0;
 			height: 80px;
-			background: #fff;
+			background: var.$clr_purple_300;
 			z-index: 1;
-
 		}
 	}
 

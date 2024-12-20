@@ -17,17 +17,32 @@ document.addEventListener('DOMContentLoaded', function () {
 	fader.addEventListener('click', function () {
 	  document.body.classList.remove('menu-opened');
 	});
+  
+	// Оновлення слайдеру
+	const carousel = document.getElementById('customCarousel');
+	const currentSlideElement = document.querySelector('.curent-slide');
+	const totalSlidesElement = document.querySelector('.total-slides');
+	const totalSlides = carousel.querySelectorAll('.carousel-item').length;
+  
+	totalSlidesElement.textContent = totalSlides;
+  
+	// Оновлення поточного слайду
+	carousel.addEventListener('slid.bs.carousel', function () {
+	  const activeIndex = [...carousel.querySelectorAll('.carousel-item')].indexOf(carousel.querySelector('.carousel-item.active'));
+	  currentSlideElement.textContent = activeIndex + 1;
+	});
+  
+	// Функція перевірки ширини екрану
+	function checkScreenWidth() {
+	  if (window.innerWidth < 991) {
+		document.body.classList.remove('menu-opened');
+	  }
+	}
+  
+	// Викликаємо функцію при завантаженні сторінки
+	window.addEventListener('load', checkScreenWidth);
+  
+	// Викликаємо функцію при зміні розміру вікна
+	window.addEventListener('resize', checkScreenWidth);
   });
-
-  const carousel = document.getElementById('customCarousel');
-  const currentSlideElement = document.querySelector('.curent-slide');
-  const totalSlidesElement = document.querySelector('.total-slides');
-  const totalSlides = carousel.querySelectorAll('.carousel-item').length;
-
-  totalSlidesElement.textContent = totalSlides;
-
-  // Оновлення поточного слайду
-  carousel.addEventListener('slid.bs.carousel', function () {
-    const activeIndex = [...carousel.querySelectorAll('.carousel-item')].indexOf(carousel.querySelector('.carousel-item.active'));
-    currentSlideElement.textContent = activeIndex + 1;
-  });
+  
