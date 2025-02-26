@@ -1,48 +1,115 @@
-document.addEventListener('DOMContentLoaded', function () {
-	// Додаємо елемент з класом "fader" у #header
-	const fader = document.createElement('span');
-	fader.classList.add('fader');
-	document.getElementById('header').appendChild(fader);
-  
-	// Додаємо подію кліку для кнопки "open-menu"
-	const openMenuButton = document.querySelector('.open-menu');
-	if (openMenuButton) {
-	  openMenuButton.addEventListener('click', function (event) {
-		event.preventDefault(); // Забороняємо стандартну поведінку
-		document.body.classList.toggle('menu-opened');
-	  });
-	}
-  
-	// Додаємо подію кліку для елемента "fader"
-	fader.addEventListener('click', function () {
-	  document.body.classList.remove('menu-opened');
-	});
-  
-	// Оновлення слайдеру
-	const carousel = document.getElementById('customCarousel');
-	const currentSlideElement = document.querySelector('.curent-slide');
-	const totalSlidesElement = document.querySelector('.total-slides');
-	const totalSlides = carousel.querySelectorAll('.carousel-item').length;
-  
-	totalSlidesElement.textContent = totalSlides;
-  
-	// Оновлення поточного слайду
-	carousel.addEventListener('slid.bs.carousel', function () {
-	  const activeIndex = [...carousel.querySelectorAll('.carousel-item')].indexOf(carousel.querySelector('.carousel-item.active'));
-	  currentSlideElement.textContent = activeIndex + 1;
-	});
-  
-	// Функція перевірки ширини екрану
-	function checkScreenWidth() {
-	  if (window.innerWidth < 991) {
-		document.body.classList.remove('menu-opened');
-	  }
-	}
-  
-	// Викликаємо функцію при завантаженні сторінки
-	window.addEventListener('load', checkScreenWidth);
-  
-	// Викликаємо функцію при зміні розміру вікна
-	window.addEventListener('resize', checkScreenWidth);
-  });
-  
+const surveyCtx = document.getElementById("surveyChart").getContext("2d");
+new Chart(surveyCtx, {
+  type: "bar",
+  data: {
+    labels: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"],
+    datasets: [
+      {
+        data: [4.5, 2, 2.5, 4.5, 1.5, 4.5, 4.5, 2, 2.5, 4.5, 1.5, 4.5],
+        backgroundColor: "#F18C5C",
+        borderRadius: 6,
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false }, // Прибираємо заголовок "Scores"
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        ticks: {
+          font: {
+            family: "Inter",
+            size: 12,
+            color: "#616E85",
+          },
+        },
+      },
+      y: {
+        beginAtZero: false,
+        min: 1,
+        max: 5,
+        ticks: {
+          stepSize: 1, // Шкала 1,2,3,4,5
+          font: {
+            family: "Inter",
+            size: 12,
+            color: "#616E85",
+          },
+        },
+        grid: {
+          color: "#EFF2F5", // Горизонтальна сітка
+          drawBorder: false,
+        },
+      },
+    },
+    barThickness: 15, // Фіксована ширина стовпчика
+    categoryPercentage: 0.5, // Простір між стовпчиками
+    barPercentage: 1, // Контроль відстані між стовпчиками
+  },
+});
+
+const kpCtx = document.getElementById("kpChart").getContext("2d");
+new Chart(kpCtx, {
+  type: "bar",
+  data: {
+    labels: ["KP 1", "KP 2", "KP 3", "KP 4", "KP 5"],
+    datasets: [
+      {
+        data: [90, 70, 25, 65, 25],
+        backgroundColor: [
+          "#5155C3",
+          "#597DBE",
+          "#5F99BB",
+          "#65B8B7",
+          "#6CDDB1",
+        ],
+        borderRadius: 6,
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+    },
+    scales: {
+      x: {
+        ticks: {
+          font: {
+            family: "Inter",
+            size: 12,
+          },
+          color: "#616E85",
+        },
+        grid: { display: false },
+      },
+      y: {
+        beginAtZero: true,
+        max: 100,
+        ticks: {
+          stepSize: 25,
+          font: {
+            family: "Inter",
+            size: 12,
+          },
+          color: "#616E85",
+          callback: function (value) {
+            return value + "%";
+          },
+        },
+        grid: {
+          color: "#EFF2F5",
+          drawBorder: false,
+        },
+      },
+    },
+    barThickness: 76,
+    categoryPercentage: 0.6,
+    barPercentage: 1,
+  },
+});
